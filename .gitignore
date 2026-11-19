@@ -1,0 +1,17 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+crash.log
+crash.*.log
+
+# Credentials and private keys
+*.pem
+*.key
+.aws/
+credentials
+
+# System files
+.DS_Store
