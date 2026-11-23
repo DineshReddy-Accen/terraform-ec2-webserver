@@ -122,26 +122,37 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [aws_security_group.web_sg.id]
 
   user_data = <<-EOF
-              #!/bin/bash
-              apt-get update -y
-              apt-get install -y apache2
-              systemctl enable apache2
-              systemctl start apache2
+#!/bin/bash
+apt-get update -y
+apt-get install -y apache2
+systemctl enable apache2
+systemctl start apache2
 
-              cat > /var/www/html/index.html <<'HTML'
-              <!DOCTYPE html>
-              <html>
-              <head>
-                <title>Terraform Web Server</title>
-              </head>
-              <body>
-                <h1>Welcome to My AWS Web Server!</h1>
-                <h2>Deployed using Terraform</h2>
-                <p>Linux EC2 + Apache + AWS Infrastructure as Code</p>
-              </body>
-              </html>
-              HTML
-              EOF
+cat > /var/www/html/index.html <<'HTML'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dinesh EC2 Web Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h1 {
+            color: #000;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dinesh EC2 Web Server</h1>
+    <p>Deployed using Terraform in ap-south-1.</p>
+</body>
+</html>
+HTML
+EOF
 
   tags = {
     Name = "Terraform-Web-Server"
